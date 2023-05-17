@@ -7,6 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 
+import java.util.*;
+import java.util.stream.Collectors;
+
 @SpringBootApplication
 public class DemoApplication {
     private final Logger logger = LoggerFactory.getLogger(DemoApplication.class);
@@ -15,11 +18,13 @@ public class DemoApplication {
         SpringApplication.run(DemoApplication.class, args);
     }
 
-    @EventListener(ApplicationReadyEvent.class)
+   /* @EventListener(ApplicationReadyEvent.class)
     public void runAfterStartup() {
         logger.info("Running Blue Demo app" );
        
-    }
+    }*/
+
+
 
     
     
