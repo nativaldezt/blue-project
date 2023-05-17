@@ -1,0 +1,26 @@
+version: '2'
+
+services:
+  app:
+    image: 'blue-project:latest'
+    build:
+      context: .
+    container_name: app
+    depends_on:
+      - db
+    ports:
+      - 8083:8083
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/blue-postgres
+      - SPRING_DATASOURCE_USERNAME=blue-postgres
+      - SPRING_DATASOURCE_PASSWORD=blue-postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+          
+  db:
+    image: 'postgres:13.1-alpine'
+    container_name: db
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=blue-postgres
+      - POSTGRES_PASSWORD=blue-postgres
