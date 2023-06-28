@@ -1,4 +1,4 @@
-package com.nvaldez.blue;
+package com.nvaldez.blue.service;
 
 import org.springframework.stereotype.Service;
 
@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 @Service
@@ -20,6 +21,7 @@ public class SumService {
     private static Integer getSum(List<Integer> output) {
         // CODE GOES HERE
         HashMap<Integer, Integer> ocurrences = new HashMap<>();
+
         output.stream().forEach(i -> {
             Integer o = 0;
             if(ocurrences.containsKey(i)) {
@@ -28,15 +30,13 @@ public class SumService {
             o++;
             ocurrences.put(i, o);
         });
-        Integer sum = 0;
+        int sum = 0;
         for (Integer i : output) {
             Integer o = ocurrences.get(i);
             if(o<2){
                 sum = sum + i;
             }
         }
-
-
         return sum;
 
     }
